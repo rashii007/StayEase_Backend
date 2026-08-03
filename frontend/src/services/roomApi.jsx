@@ -1,11 +1,11 @@
 // services/roomApi.js
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api/rooms";
-
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 export const getRooms = async () => {
   try {
-    const response = await axios.get(API_BASE_URL);
+    const response = await axios.get(`${API_BASE_URL}/rooms`);
     if (response.data && response.data.data) {
       return response.data.data;
     }
@@ -18,7 +18,7 @@ export const getRooms = async () => {
 
 export const getRoomById = async (id) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/${id}`);
+    const response = await axios.get(`${API_BASE_URL}/rooms/${id}`);
     return response.data.data || response.data;
   } catch (error) {
     console.error("Get Room Error:", error.response?.data || error.message);
@@ -28,7 +28,7 @@ export const getRoomById = async (id) => {
 
 export const createRoom = async (roomData) => {
   try {
-    const response = await axios.post(API_BASE_URL, roomData);
+    const response = await axios.post(`${API_BASE_URL}/rooms`, roomData);
     return response.data.data || response.data;
   } catch (error) {
     console.error("Create Room Error:", error.response?.data || error.message);
@@ -38,7 +38,7 @@ export const createRoom = async (roomData) => {
 
 export const updateRoom = async (id, roomData) => {
   try {
-    const response = await axios.put(`${API_BASE_URL}/${id}`, roomData);
+    const response = await axios.put(`${API_BASE_URL}/rooms/${id}`, roomData);
     return response.data.data || response.data;
   } catch (error) {
     console.error("Update Room Error:", error.response?.data || error.message);
@@ -48,7 +48,7 @@ export const updateRoom = async (id, roomData) => {
 
 export const deleteRoom = async (id) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}/${id}`);
+    const response = await axios.delete(`${API_BASE_URL}/rooms/${id}`);
     return response.data;
   } catch (error) {
     console.error("Delete Room Error:", error.response?.data || error.message);

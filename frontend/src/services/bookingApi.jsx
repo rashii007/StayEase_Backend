@@ -1,11 +1,11 @@
 // services/bookingApi.js
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api/bookings";
-
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 export const getBookings = async () => {
   try {
-    const response = await axios.get(API_BASE_URL);
+    const response = await axios.get(`${API_BASE_URL}/bookings`);
     console.log("Raw Bookings Response:", response.data);
 
     // ✅ FIX: Check for nested data property
@@ -32,7 +32,7 @@ export const getBookings = async () => {
 
 export const createBooking = async (bookingData) => {
   try {
-    const response = await axios.post(API_BASE_URL, bookingData);
+    const response = await axios.post(`${API_BASE_URL}/bookings`, bookingData);
     return response.data.data || response.data;
   } catch (error) {
     console.error(
@@ -45,7 +45,9 @@ export const createBooking = async (bookingData) => {
 
 export const updateBookingStatus = async (id, status) => {
   try {
-    const response = await axios.put(`${API_BASE_URL}/${id}`, { status });
+    const response = await axios.put(`${API_BASE_URL}/bookings/${id}`, {
+      status,
+    });
     return response.data.data || response.data;
   } catch (error) {
     console.error(
@@ -58,7 +60,7 @@ export const updateBookingStatus = async (id, status) => {
 
 export const deleteBooking = async (id) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}/${id}`);
+    const response = await axios.delete(`${API_BASE_URL}/bookings/${id}`);
     return response.data;
   } catch (error) {
     console.error(

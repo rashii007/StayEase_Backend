@@ -496,7 +496,7 @@ export default function Hotels() {
 
                   {/* ✅ Glassmorphism Delete Button */}
                   <button
-                    onClick={() => handleDelete(room._id)}
+                    onClick={() => handleDelete(hotel._id)}
                     className="flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 backdrop-blur-md bg-white/20 border border-white/30 shadow-lg hover:shadow-xl hover:scale-105 text-slate-500"
                   >
                     🗑️ Delete
