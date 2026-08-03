@@ -132,7 +132,6 @@ export default function Rooms() {
     }
   };
 
-  // ✅ Toggle room availability (Book/Unbook)
   const handleToggleAvailability = async (room) => {
     const newStatus = !room.isAvailable;
     const action = newStatus ? "available" : "booked";
@@ -211,16 +210,18 @@ export default function Rooms() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
         <div>
           <h1
-            className={`text-2xl font-bold ${darkMode ? "text-white" : "text-gray-800"}`}
+            className={`text-xl sm:text-2xl font-bold ${darkMode ? "text-white" : "text-gray-800"}`}
           >
             🛏️ Rooms
           </h1>
-          <p className={darkMode ? "text-gray-400" : "text-gray-500"}>
+          <p
+            className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"}`}
+          >
             Manage your hotel rooms
           </p>
         </div>
@@ -238,7 +239,7 @@ export default function Rooms() {
               });
             }
           }}
-          className={`px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
+          className={`w-full sm:w-auto px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
             showForm
               ? darkMode
                 ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
@@ -251,14 +252,14 @@ export default function Rooms() {
       </div>
 
       {/* Search Bar */}
-      <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
         <div className="flex-1 relative">
           <input
             type="text"
             placeholder="🔍 Search rooms by number, type, or hotel..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+            className={`w-full pl-10 pr-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
               darkMode
                 ? "bg-gray-800 border-gray-700 text-white placeholder-gray-400"
                 : "bg-white border-gray-200 text-gray-900 placeholder-gray-500"
@@ -273,18 +274,18 @@ export default function Rooms() {
         {showForm && (
           <form
             onSubmit={handleSubmit}
-            className={`p-6 rounded-xl shadow-sm border ${
+            className={`p-4 sm:p-6 rounded-xl shadow-sm border ${
               darkMode
                 ? "bg-gray-800 border-gray-700"
                 : "bg-white border-gray-100"
             }`}
           >
             <h2
-              className={`text-lg font-semibold mb-4 ${darkMode ? "text-white" : "text-gray-800"}`}
+              className={`text-base sm:text-lg font-semibold mb-4 ${darkMode ? "text-white" : "text-gray-800"}`}
             >
               {editingId ? "✏️ Edit Room" : "➕ Add New Room"}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <input
                 type="text"
                 placeholder="Room Number *"
@@ -292,7 +293,7 @@ export default function Rooms() {
                 onChange={(e) =>
                   setFormData({ ...formData, roomNumber: e.target.value })
                 }
-                className={`border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base ${
                   darkMode
                     ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
                     : "bg-white border-gray-200 text-gray-900 placeholder-gray-500"
@@ -304,7 +305,7 @@ export default function Rooms() {
                 onChange={(e) =>
                   setFormData({ ...formData, type: e.target.value })
                 }
-                className={`border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base ${
                   darkMode
                     ? "bg-gray-700 border-gray-600 text-white"
                     : "bg-white border-gray-200 text-gray-900"
@@ -324,7 +325,7 @@ export default function Rooms() {
                 onChange={(e) =>
                   setFormData({ ...formData, price: e.target.value })
                 }
-                className={`border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base ${
                   darkMode
                     ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
                     : "bg-white border-gray-200 text-gray-900 placeholder-gray-500"
@@ -336,7 +337,7 @@ export default function Rooms() {
                 onChange={(e) =>
                   setFormData({ ...formData, hotelId: e.target.value })
                 }
-                className={`border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base ${
                   darkMode
                     ? "bg-gray-700 border-gray-600 text-white"
                     : "bg-white border-gray-200 text-gray-900"
@@ -351,7 +352,7 @@ export default function Rooms() {
                 ))}
               </select>
             </div>
-            <div className="mt-4">
+            <div className="mt-3 sm:mt-4">
               <label className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -372,10 +373,10 @@ export default function Rooms() {
                 </span>
               </label>
             </div>
-            <div className="flex gap-3 mt-4">
+            <div className="flex flex-col sm:flex-row gap-3 mt-4">
               <button
                 type="submit"
-                className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                className="w-full sm:w-auto bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
               >
                 {editingId ? "💾 Update Room" : "💾 Save Room"}
               </button>
@@ -392,7 +393,7 @@ export default function Rooms() {
                     isAvailable: true,
                   });
                 }}
-                className={`px-6 py-2 rounded-lg transition-colors ${
+                className={`w-full sm:w-auto px-6 py-2 rounded-lg transition-colors text-sm sm:text-base ${
                   darkMode
                     ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -406,15 +407,17 @@ export default function Rooms() {
       </div>
 
       {/* Stats Bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <div
-          className={`p-4 rounded-xl shadow-sm border text-center ${
+          className={`p-3 sm:p-4 rounded-xl shadow-sm border text-center ${
             darkMode
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-100"
           }`}
         >
-          <p className="text-2xl font-bold text-blue-600">{rooms.length}</p>
+          <p className="text-xl sm:text-2xl font-bold text-blue-600">
+            {rooms.length}
+          </p>
           <p
             className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}
           >
@@ -422,13 +425,13 @@ export default function Rooms() {
           </p>
         </div>
         <div
-          className={`p-4 rounded-xl shadow-sm border text-center ${
+          className={`p-3 sm:p-4 rounded-xl shadow-sm border text-center ${
             darkMode
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-100"
           }`}
         >
-          <p className="text-2xl font-bold text-green-600">
+          <p className="text-xl sm:text-2xl font-bold text-green-600">
             {rooms.filter((r) => r.isAvailable !== false).length}
           </p>
           <p
@@ -438,13 +441,13 @@ export default function Rooms() {
           </p>
         </div>
         <div
-          className={`p-4 rounded-xl shadow-sm border text-center ${
+          className={`p-3 sm:p-4 rounded-xl shadow-sm border text-center ${
             darkMode
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-100"
           }`}
         >
-          <p className="text-2xl font-bold text-red-600">
+          <p className="text-xl sm:text-2xl font-bold text-red-600">
             {rooms.filter((r) => r.isAvailable === false).length}
           </p>
           <p
@@ -454,13 +457,15 @@ export default function Rooms() {
           </p>
         </div>
         <div
-          className={`p-4 rounded-xl shadow-sm border text-center ${
+          className={`p-3 sm:p-4 rounded-xl shadow-sm border text-center ${
             darkMode
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-100"
           }`}
         >
-          <p className="text-2xl font-bold text-purple-600">{hotels.length}</p>
+          <p className="text-xl sm:text-2xl font-bold text-purple-600">
+            {hotels.length}
+          </p>
           <p
             className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}
           >
@@ -469,8 +474,8 @@ export default function Rooms() {
         </div>
       </div>
 
-      {/* Rooms Cards Grid with Images */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Rooms Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {filteredRooms.length > 0 ? (
           filteredRooms.map((room, index) => (
             <div
@@ -482,7 +487,7 @@ export default function Rooms() {
               } ${room.isAvailable === false ? "opacity-75" : ""}`}
             >
               {/* Room Image */}
-              <div className="h-48 w-full overflow-hidden relative bg-gray-200">
+              <div className="h-40 sm:h-48 w-full overflow-hidden relative bg-gray-200">
                 {!imageErrors[room._id] ? (
                   <img
                     src={getRoomImage(index)}
@@ -492,15 +497,15 @@ export default function Rooms() {
                     loading="lazy"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white text-6xl font-bold">
+                  <div className="w-full h-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white text-4xl sm:text-6xl font-bold">
                     {room.roomNumber.charAt(0)}
                   </div>
                 )}
 
-                {/* Status Badge on Image */}
-                <div className="absolute top-3 right-3">
+                {/* Status Badge */}
+                <div className="absolute top-2 sm:top-3 right-2 sm:right-3">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold shadow-sm ${
+                    className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-semibold shadow-sm ${
                       room.isAvailable !== false
                         ? "bg-green-500 text-white"
                         : "bg-red-500 text-white"
@@ -511,9 +516,9 @@ export default function Rooms() {
                 </div>
 
                 {/* Type Badge */}
-                <div className="absolute bottom-3 left-3">
+                <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold shadow-sm ${
+                    className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-semibold shadow-sm ${
                       room.type === "Single"
                         ? "bg-blue-500 text-white"
                         : room.type === "Double"
@@ -530,15 +535,15 @@ export default function Rooms() {
                 </div>
 
                 {/* Price Badge */}
-                <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-sm font-semibold shadow-sm">
+                <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 bg-black/60 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg text-xs sm:text-sm font-semibold shadow-sm">
                   ${room.price}/night
                 </div>
 
-                {/* ✅ Book/Unbook Button Overlay */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                {/* Book/Unbook Overlay */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 sm:gap-3">
                   <button
                     onClick={() => handleToggleAvailability(room)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                       room.isAvailable !== false
                         ? "bg-red-500 hover:bg-red-600 text-white"
                         : "bg-green-500 hover:bg-green-600 text-white"
@@ -549,20 +554,22 @@ export default function Rooms() {
                 </div>
               </div>
 
-              <div className="p-5">
-                <div className="flex justify-between items-start">
+              <div className="p-3 sm:p-5">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-0">
                   <div>
                     <h3
-                      className={`text-lg font-semibold ${darkMode ? "text-white" : "text-gray-800"}`}
+                      className={`text-base sm:text-lg font-semibold ${darkMode ? "text-white" : "text-gray-800"}`}
                     >
                       Room #{room.roomNumber}
                     </h3>
-                    <p className={darkMode ? "text-gray-400" : "text-gray-500"}>
+                    <p
+                      className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"}`}
+                    >
                       🏨 {room.hotelId?.name || "N/A"}
                     </p>
                   </div>
                   <span
-                    className={`text-sm font-medium ${
+                    className={`text-xs sm:text-sm font-medium ${
                       room.isAvailable !== false
                         ? "text-green-500"
                         : "text-red-500"
@@ -572,11 +579,15 @@ export default function Rooms() {
                   </span>
                 </div>
 
-                <div className="flex gap-2 mt-4 pt-4 border-t border-gray-100">
+                <div className="flex flex-col sm:flex-row gap-2 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
                   {/* ✅ Glassmorphism Edit Button */}
                   <button
                     onClick={() => handleEdit(room)}
-                    className="flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 backdrop-blur-md bg-white/20 border border-white/30 shadow-lg hover:shadow-xl hover:scale-105 text-slate-500"
+                    className={`w-full sm:flex-1 px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 backdrop-blur-md border shadow-lg hover:shadow-xl hover:scale-105 ${
+                      darkMode
+                        ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+                        : "bg-white/30 border-white/40 text-gray-700 hover:bg-white/50"
+                    }`}
                   >
                     ✏️ Edit
                   </button>
@@ -584,7 +595,11 @@ export default function Rooms() {
                   {/* ✅ Glassmorphism Delete Button */}
                   <button
                     onClick={() => handleDelete(room._id)}
-                    className="flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 backdrop-blur-md bg-white/20 border border-white/30 shadow-lg hover:shadow-xl hover:scale-105 text-slate-500"
+                    className={`w-full sm:flex-1 px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 backdrop-blur-md border shadow-lg hover:shadow-xl hover:scale-105 ${
+                      darkMode
+                        ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+                        : "bg-white/30 border-white/40 text-gray-700 hover:bg-white/50"
+                    }`}
                   >
                     🗑️ Delete
                   </button>
@@ -593,9 +608,9 @@ export default function Rooms() {
             </div>
           ))
         ) : (
-          <div className="col-span-full text-center py-12">
+          <div className="col-span-full text-center py-8 sm:py-12">
             <svg
-              className="mx-auto h-12 w-12 text-gray-400"
+              className="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-gray-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -608,7 +623,7 @@ export default function Rooms() {
               />
             </svg>
             <p
-              className={`mt-2 text-lg ${darkMode ? "text-gray-400" : "text-gray-500"}`}
+              className={`mt-2 text-base sm:text-lg ${darkMode ? "text-gray-400" : "text-gray-500"}`}
             >
               No rooms found
             </p>
@@ -625,7 +640,7 @@ export default function Rooms() {
 
       {/* Footer */}
       <div
-        className={`rounded-xl p-4 text-center text-sm ${
+        className={`rounded-xl p-3 sm:p-4 text-center text-xs sm:text-sm ${
           darkMode ? "bg-gray-800 text-gray-400" : "bg-gray-100 text-gray-500"
         }`}
       >

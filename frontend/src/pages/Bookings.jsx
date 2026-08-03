@@ -170,16 +170,18 @@ export default function Bookings() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
         <div>
           <h1
-            className={`text-2xl font-bold ${darkMode ? "text-white" : "text-gray-800"}`}
+            className={`text-xl sm:text-2xl font-bold ${darkMode ? "text-white" : "text-gray-800"}`}
           >
             📅 Bookings
           </h1>
-          <p className={darkMode ? "text-gray-400" : "text-gray-500"}>
+          <p
+            className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"}`}
+          >
             Manage your guest bookings
           </p>
         </div>
@@ -197,7 +199,7 @@ export default function Bookings() {
               });
             }
           }}
-          className={`px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
+          className={`w-full sm:w-auto px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
             showForm
               ? darkMode
                 ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
@@ -210,14 +212,14 @@ export default function Bookings() {
       </div>
 
       {/* Search Bar */}
-      <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
         <div className="flex-1 relative">
           <input
             type="text"
             placeholder="🔍 Search bookings by guest, room, or status..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+            className={`w-full pl-10 pr-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
               darkMode
                 ? "bg-gray-800 border-gray-700 text-white placeholder-gray-400"
                 : "bg-white border-gray-200 text-gray-900 placeholder-gray-500"
@@ -232,18 +234,18 @@ export default function Bookings() {
         {showForm && (
           <form
             onSubmit={handleSubmit}
-            className={`p-6 rounded-xl shadow-sm border ${
+            className={`p-4 sm:p-6 rounded-xl shadow-sm border ${
               darkMode
                 ? "bg-gray-800 border-gray-700"
                 : "bg-white border-gray-100"
             }`}
           >
             <h2
-              className={`text-lg font-semibold mb-4 ${darkMode ? "text-white" : "text-gray-800"}`}
+              className={`text-base sm:text-lg font-semibold mb-4 ${darkMode ? "text-white" : "text-gray-800"}`}
             >
               {editingId ? "✏️ Edit Booking" : "➕ Add New Booking"}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <input
                 type="text"
                 placeholder="Guest Name *"
@@ -251,7 +253,7 @@ export default function Bookings() {
                 onChange={(e) =>
                   setFormData({ ...formData, guestName: e.target.value })
                 }
-                className={`border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base ${
                   darkMode
                     ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
                     : "bg-white border-gray-200 text-gray-900 placeholder-gray-500"
@@ -265,7 +267,7 @@ export default function Bookings() {
                 onChange={(e) =>
                   setFormData({ ...formData, roomNumber: e.target.value })
                 }
-                className={`border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base ${
                   darkMode
                     ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
                     : "bg-white border-gray-200 text-gray-900 placeholder-gray-500"
@@ -278,7 +280,7 @@ export default function Bookings() {
                 onChange={(e) =>
                   setFormData({ ...formData, checkIn: e.target.value })
                 }
-                className={`border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base ${
                   darkMode
                     ? "bg-gray-700 border-gray-600 text-white"
                     : "bg-white border-gray-200 text-gray-900"
@@ -291,7 +293,7 @@ export default function Bookings() {
                 onChange={(e) =>
                   setFormData({ ...formData, checkOut: e.target.value })
                 }
-                className={`border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base ${
                   darkMode
                     ? "bg-gray-700 border-gray-600 text-white"
                     : "bg-white border-gray-200 text-gray-900"
@@ -300,13 +302,13 @@ export default function Bookings() {
               />
             </div>
             {editingId && (
-              <div className="mt-4">
+              <div className="mt-3 sm:mt-4">
                 <select
                   value={formData.status}
                   onChange={(e) =>
                     setFormData({ ...formData, status: e.target.value })
                   }
-                  className={`w-full md:w-48 border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`w-full sm:w-48 border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base ${
                     darkMode
                       ? "bg-gray-700 border-gray-600 text-white"
                       : "bg-white border-gray-200 text-gray-900"
@@ -318,10 +320,10 @@ export default function Bookings() {
                 </select>
               </div>
             )}
-            <div className="flex gap-3 mt-4">
+            <div className="flex flex-col sm:flex-row gap-3 mt-4">
               <button
                 type="submit"
-                className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                className="w-full sm:w-auto bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
               >
                 {editingId ? "💾 Update Booking" : "💾 Save Booking"}
               </button>
@@ -338,7 +340,7 @@ export default function Bookings() {
                     status: "pending",
                   });
                 }}
-                className={`px-6 py-2 rounded-lg transition-colors ${
+                className={`w-full sm:w-auto px-6 py-2 rounded-lg transition-colors text-sm sm:text-base ${
                   darkMode
                     ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -351,16 +353,18 @@ export default function Bookings() {
         )}
       </div>
 
-      {/* Stats Bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* Stats Bar - Responsive Grid */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <div
-          className={`p-4 rounded-xl shadow-sm border text-center ${
+          className={`p-3 sm:p-4 rounded-xl shadow-sm border text-center ${
             darkMode
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-100"
           }`}
         >
-          <p className="text-2xl font-bold text-blue-600">{bookings.length}</p>
+          <p className="text-xl sm:text-2xl font-bold text-blue-600">
+            {bookings.length}
+          </p>
           <p
             className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}
           >
@@ -368,13 +372,13 @@ export default function Bookings() {
           </p>
         </div>
         <div
-          className={`p-4 rounded-xl shadow-sm border text-center ${
+          className={`p-3 sm:p-4 rounded-xl shadow-sm border text-center ${
             darkMode
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-100"
           }`}
         >
-          <p className="text-2xl font-bold text-yellow-600">
+          <p className="text-xl sm:text-2xl font-bold text-yellow-600">
             {statusCounts.pending || 0}
           </p>
           <p
@@ -384,13 +388,13 @@ export default function Bookings() {
           </p>
         </div>
         <div
-          className={`p-4 rounded-xl shadow-sm border text-center ${
+          className={`p-3 sm:p-4 rounded-xl shadow-sm border text-center ${
             darkMode
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-100"
           }`}
         >
-          <p className="text-2xl font-bold text-green-600">
+          <p className="text-xl sm:text-2xl font-bold text-green-600">
             {statusCounts.confirmed || 0}
           </p>
           <p
@@ -400,13 +404,13 @@ export default function Bookings() {
           </p>
         </div>
         <div
-          className={`p-4 rounded-xl shadow-sm border text-center ${
+          className={`p-3 sm:p-4 rounded-xl shadow-sm border text-center ${
             darkMode
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-100"
           }`}
         >
-          <p className="text-2xl font-bold text-red-600">
+          <p className="text-xl sm:text-2xl font-bold text-red-600">
             {statusCounts.cancelled || 0}
           </p>
           <p
@@ -417,7 +421,7 @@ export default function Bookings() {
         </div>
       </div>
 
-      {/* Bookings Table */}
+      {/* Bookings Table - Responsive */}
       <div
         className={`rounded-xl shadow-sm border overflow-hidden ${
           darkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-100"
@@ -425,46 +429,46 @@ export default function Bookings() {
       >
         <div className="overflow-x-auto">
           {filteredBookings.length > 0 ? (
-            <table className="w-full">
+            <table className="w-full min-w-[600px]">
               <thead className={darkMode ? "bg-gray-700" : "bg-gray-50"}>
                 <tr>
                   <th
-                    className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${
+                    className={`px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium uppercase tracking-wider ${
                       darkMode ? "text-gray-400" : "text-gray-500"
                     }`}
                   >
                     Guest
                   </th>
                   <th
-                    className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${
+                    className={`px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium uppercase tracking-wider ${
                       darkMode ? "text-gray-400" : "text-gray-500"
                     }`}
                   >
                     Room
                   </th>
                   <th
-                    className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${
+                    className={`hidden sm:table-cell px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium uppercase tracking-wider ${
                       darkMode ? "text-gray-400" : "text-gray-500"
                     }`}
                   >
                     Check In
                   </th>
                   <th
-                    className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${
+                    className={`hidden sm:table-cell px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium uppercase tracking-wider ${
                       darkMode ? "text-gray-400" : "text-gray-500"
                     }`}
                   >
                     Check Out
                   </th>
                   <th
-                    className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${
+                    className={`px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium uppercase tracking-wider ${
                       darkMode ? "text-gray-400" : "text-gray-500"
                     }`}
                   >
                     Status
                   </th>
                   <th
-                    className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${
+                    className={`px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium uppercase tracking-wider ${
                       darkMode ? "text-gray-400" : "text-gray-500"
                     }`}
                   >
@@ -483,40 +487,40 @@ export default function Bookings() {
                     }`}
                   >
                     <td
-                      className={`px-6 py-4 whitespace-nowrap font-medium ${
+                      className={`px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap font-medium text-sm sm:text-base ${
                         darkMode ? "text-white" : "text-gray-900"
                       }`}
                     >
                       {booking.guestName}
                     </td>
                     <td
-                      className={`px-6 py-4 whitespace-nowrap ${
+                      className={`px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-sm sm:text-base ${
                         darkMode ? "text-gray-300" : "text-gray-700"
                       }`}
                     >
                       {booking.roomNumber}
                     </td>
                     <td
-                      className={`px-6 py-4 whitespace-nowrap ${
+                      className={`hidden sm:table-cell px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-sm sm:text-base ${
                         darkMode ? "text-gray-300" : "text-gray-700"
                       }`}
                     >
                       {new Date(booking.checkIn).toLocaleDateString()}
                     </td>
                     <td
-                      className={`px-6 py-4 whitespace-nowrap ${
+                      className={`hidden sm:table-cell px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-sm sm:text-base ${
                         darkMode ? "text-gray-300" : "text-gray-700"
                       }`}
                     >
                       {new Date(booking.checkOut).toLocaleDateString()}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
                       <select
                         value={booking.status || "pending"}
                         onChange={(e) =>
                           handleUpdateStatus(booking._id, e.target.value)
                         }
-                        className={`border rounded px-2 py-1 text-sm font-medium ${
+                        className={`border rounded px-1 sm:px-2 py-0.5 sm:py-1 text-xs sm:text-sm font-medium ${
                           booking.status === "confirmed"
                             ? "bg-green-100 text-green-800 border-green-200"
                             : booking.status === "cancelled"
@@ -529,20 +533,28 @@ export default function Bookings() {
                         <option value="cancelled">❌ Cancelled</option>
                       </select>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex gap-2">
+                    <td className="px-2 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
+                      <div className="flex flex-col sm:flex-row gap-1 sm:gap-2">
                         {/* ✅ Glassmorphism Edit Button */}
                         <button
-                          onClick={() => handleEdit(room)}
-                          className="flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 backdrop-blur-md bg-white/20 border border-white/30 shadow-lg hover:shadow-xl hover:scale-105 text-slate-500"
+                          onClick={() => handleEdit(booking)}
+                          className={`px-2 sm:px-3 py-1 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 backdrop-blur-md border shadow-lg hover:shadow-xl hover:scale-105 ${
+                            darkMode
+                              ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+                              : "bg-white/30 border-white/40 text-gray-700 hover:bg-white/50"
+                          }`}
                         >
                           ✏️ Edit
                         </button>
 
                         {/* ✅ Glassmorphism Delete Button */}
                         <button
-                          onClick={() => handleDelete(room._id)}
-                          className="flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 backdrop-blur-md bg-white/20 border border-white/30 shadow-lg hover:shadow-xl hover:scale-105 text-slate-500"
+                          onClick={() => handleDelete(booking._id)}
+                          className={`px-2 sm:px-3 py-1 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 backdrop-blur-md border shadow-lg hover:shadow-xl hover:scale-105 ${
+                            darkMode
+                              ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+                              : "bg-white/30 border-white/40 text-gray-700 hover:bg-white/50"
+                          }`}
                         >
                           🗑️ Delete
                         </button>
@@ -553,9 +565,9 @@ export default function Bookings() {
               </tbody>
             </table>
           ) : (
-            <div className="text-center py-12">
+            <div className="text-center py-8 sm:py-12">
               <svg
-                className="mx-auto h-12 w-12 text-gray-400"
+                className="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -568,7 +580,7 @@ export default function Bookings() {
                 />
               </svg>
               <p
-                className={`mt-2 text-lg ${darkMode ? "text-gray-400" : "text-gray-500"}`}
+                className={`mt-2 text-base sm:text-lg ${darkMode ? "text-gray-400" : "text-gray-500"}`}
               >
                 No bookings found
               </p>
@@ -586,7 +598,7 @@ export default function Bookings() {
 
       {/* Footer */}
       <div
-        className={`rounded-xl p-4 text-center text-sm ${
+        className={`rounded-xl p-3 sm:p-4 text-center text-xs sm:text-sm ${
           darkMode ? "bg-gray-800 text-gray-400" : "bg-gray-100 text-gray-500"
         }`}
       >
