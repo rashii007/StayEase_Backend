@@ -14,7 +14,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://stay-ease-mern.vercel.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://stay-ease-mern.vercel.app",
+      "https://stay-ease-mern-git-main-pmik754-7622s-projects.vercel.app",
+    ],
     credentials: true,
   }),
 );
