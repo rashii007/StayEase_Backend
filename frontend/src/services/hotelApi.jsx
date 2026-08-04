@@ -51,7 +51,7 @@ export const updateHotel = async (id, hotelData) => {
 
 export const deleteHotel = async (id) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}/${id}`);
+    const response = await axios.delete(`${API_BASE_URL}/hotels/${id}`);
     return response.data;
   } catch (error) {
     console.error("Delete Hotel Error:", error.response?.data || error.message);
